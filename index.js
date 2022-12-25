@@ -1,6 +1,63 @@
 let startbtn= document.getElementById("startQuiz")
 let timeDiv= document.getElementById("time")
-let quizTime= 10;
+let initialPage= document.getElementById("initialPage")
+let quizDiv = document.getElementById("quizQuestions")
+let ackdiv= document.getElementById("acknowledgement")
+let quizTime= 50;
+let score = 0
+
+let quizQuestions = [{
+    question: "question1", 
+    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
+    answer: "choice 2"
+},{
+    question: "question2", 
+    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
+    answer: "choice 2"
+},{
+    question: "question3", 
+    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
+    answer: "choice 2"
+}]
+let questionNumber = 0;
+function startQuiz (){
+    initialPage.innerHTML="";
+    quizDiv.innerHTML=""
+    let currentQuestion = quizQuestions [questionNumber]
+
+    let questiondiv = document.createElement("div")
+    questiondiv.innerHTML = currentQuestion.question;
+
+    let choicediv= document.createElement("div")
+
+
+    for (let i=0; i<currentQuestion.choices.length;i++){
+        let choicebtn = document.createElement("button")
+        choicebtn.innerHTML=currentQuestion.choices[i]
+        choicebtn.addEventListener('click',event=>{
+            console.log(event.target.innerHTML)
+            let userChoice= event.target.innerHTML;
+            let correctAnswer= currentQuestion.answer;
+            if (userChoice===correctAnswer){
+               ackdiv.innerHTML="";
+               ackdiv.innerHTML="correct answer" 
+               score = score + 10;
+               questionNumber++;
+               startQuiz()
+
+            }else {
+            ackdiv.innerHTML="";
+            ackdiv.innerHTML="incorrect answer" 
+            quizTime = quizTime - 10;
+            questionNumber++;
+            startQuiz()
+
+            }
+        })
+        choicediv.append(choicebtn)
+    }
+    quizDiv.append(questiondiv,choicediv)
+}
 
 function startTimer(){
     let setTime= setInterval(function(){
@@ -17,6 +74,7 @@ function startTimer(){
 
  function init(){
     startTimer();
+    startQuiz();
  }
 
 startbtn.addEventListener("click",init)
