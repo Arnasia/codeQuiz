@@ -9,16 +9,25 @@ let score = 0
 let quizQuestions = [{
     question: "question1", 
     choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
-    answer: "choice 2"
+    answer: "choice 4"
 },{
     question: "question2", 
     choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
-    answer: "choice 2"
+    answer: "choice 1"
 },{
     question: "question3", 
     choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
+    answer: "choice 3"
+},{
+    question: "question4", 
+    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
     answer: "choice 2"
+},{
+    question: "question5", 
+    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
+    answer: "choice 3"
 }]
+
 let questionNumber = 0;
 function startQuiz (){
     initialPage.innerHTML="";
@@ -42,6 +51,8 @@ function startQuiz (){
                ackdiv.innerHTML="";
                ackdiv.innerHTML="correct answer" 
                score = score + 10;
+               timeDiv.innerHTML=score;
+               document.getElementById('finalscore').innerHTML = score;
                questionNumber++;
                startQuiz()
 
@@ -49,6 +60,7 @@ function startQuiz (){
             ackdiv.innerHTML="";
             ackdiv.innerHTML="incorrect answer" 
             quizTime = quizTime - 10;
+            timeDiv.innerHTML=quizTime;
             questionNumber++;
             startQuiz()
 
@@ -62,6 +74,7 @@ function startQuiz (){
 function startTimer(){
     let setTime= setInterval(function(){
         quizTime=quizTime - 1;
+        timeDiv.innerHTML=`Time Left : ${quizTime}`
         if (quizTime === 0){
             clearInterval(setTime)
         } else {
