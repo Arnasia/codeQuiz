@@ -2,7 +2,12 @@ let startbtn= document.getElementById("startQuiz")
 let timeDiv= document.getElementById("time")
 let initialPage= document.getElementById("initialPage")
 let quizDiv = document.getElementById("quizQuestions")
-let ackdiv= document.getElementById("acknowledgement")
+let ackdiv = document.getElementById("acknowledgement")
+let initialsPageEl = document.getElementById("initialsPage")
+let finalPageEl = document.getElementById("finalPage")
+let overallScoreEl = document.getElementById("overallScore")
+let submitInitialsBtn = document.getElementById("submit_initials")
+
 let quizTime= 50;
 let score = 0
 
@@ -32,14 +37,14 @@ let questionNumber = 0;
 function startQuiz (){
     initialPage.innerHTML="";
     quizDiv.innerHTML=""
-    let currentQuestion = quizQuestions [questionNumber]
+    console.log (questionNumber)
+    if (questionNumber < 5){
+        let currentQuestion = quizQuestions [questionNumber]
 
     let questiondiv = document.createElement("div")
     questiondiv.innerHTML = currentQuestion.question;
 
     let choicediv= document.createElement("div")
-
-
     for (let i=0; i<currentQuestion.choices.length;i++){
         let choicebtn = document.createElement("button")
         choicebtn.innerHTML=currentQuestion.choices[i]
@@ -60,7 +65,6 @@ function startQuiz (){
             ackdiv.innerHTML="";
             ackdiv.innerHTML="incorrect answer" 
             quizTime = quizTime - 10;
-            timeDiv.innerHTML=quizTime;
             questionNumber++;
             startQuiz()
 
@@ -69,16 +73,57 @@ function startQuiz (){
         choicediv.append(choicebtn)
     }
     quizDiv.append(questiondiv,choicediv)
+} else {
+    initialsPage ()
 }
+    }
+
+    function initialsPage (){
+        initialPage.innerHTML="";
+        quizDiv.innerHTML=""
+        ackdiv.innerHTML=""
+        initialsPageEl.style.display = "block";
+
+        overallScoreEl.innerHTML = `${score} out of ${10*quizQuestions.length}`
+    }
+
+    submitInitialsBtn.addEventListener('click',function(event){
+        event.preventDefault()
+        let localStorageData= JSON.parse(localStorage.getItem('quiz_score'))
+        let userInitialsEl= document.getElementById("user_initials")
+        
+        let quizDetails={
+            initials:userInitialsEl.value,
+            score: score 
+        }
+
+        if (localStorageData === null){
+            localStorageData=[]
+            localStorageData.push(quizDetails)
+        } else {
+            localStorageData.push(quizDetails)
+        }
+
+        localStorage.setItem('quiz_score',JSON.stringify(quizDetails))
+        finalPage()
+    })
+
+    function finalPage (){
+        initialsPageEl.style.display="none"
+        finalPageEl.style.display="block"
+    }
+    
 
 function startTimer(){
     let setTime= setInterval(function(){
-        quizTime=quizTime - 1;
-        timeDiv.innerHTML=`Time Left : ${quizTime}`
-        if (quizTime === 0){
-            clearInterval(setTime)
-        } else {
+        console.log (quizTime)  
+        console.log (quizTime)
+        if (quizTime >= 0){
+            quizTime=quizTime - 1;
             timeDiv.innerHTML=`Time Left : ${quizTime}`
+        } else {
+            timeDiv.innerHTML=`Time Left : 0`
+            clearInterval(setTime)
         }
        
     },1000)
