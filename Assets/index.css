@@ -96,22 +96,26 @@
 
 }
 
-
 #acknowledgement {
     border-top: 1px solid gray;
     text-align: left;
     color: gray;
 }
 
-
 #score{
     flex: 50%;
     text-align: right;
 }
 
-#scoreTitle{
-    margin-right: px;
+#initials,
+#scoreTitle {
+    font-size: 15px;
+
     
+}
+
+#user_initials {
+    font-style: italic;
 }
 
 #initialsPage {
@@ -121,10 +125,86 @@
     position: absolute;
     top: 35%;
     left: 25%;
-
+    
 }
+
+#submit_initials {
+    width: 10%;
+    margin: auto;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+    background: blueviolet;
+    font-size: 1rem;
+    color:aliceblue
+}
+
+#submit_initials:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgb(6, 103, 247, 0.5);
+    transform: scale(1.02);
+    transform: transform 100ms;
+}
+
+#allDone {
+    margin: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
 #finalPage {
     display: none;
+    width: 50%;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    text-align: left;
+    
+}
+
+#finalPage p {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+#clearHs {
+    width: auto;
+    margin: auto;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+    background: blueviolet;
+    font-size: 20px;
+    color:aliceblue
+}
+
+
+#clearHs:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgb(6, 103, 247, 0.5);
+    transform: scale(1.02);
+    transform: transform 100ms;
+}
+
+#goBack {
+    width: auto;
+    margin: auto;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+    background: blueviolet;
+    font-size: 20px;
+    color:aliceblue
+}
+
+#goBack:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgb(6, 103, 247, 0.5);
+    transform: scale(1.02);
+    transform: transform 100ms;
 }
 
 

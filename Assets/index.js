@@ -65,7 +65,6 @@ function startQuiz (){
                ackdiv.innerHTML="Correct!"
                ackdiv.style.display="block"
                score = score + 10;
-               scoreEl.style.display = "block";
                timeDiv.innerHTML=score;
                document.getElementById('finalscore').innerHTML = score;
                questionNumber++;
@@ -76,7 +75,6 @@ function startQuiz (){
             ackdiv.innerHTML="Wrong!" 
             ackdiv.style.display="block"
             quizTime = quizTime - 10;
-            scoreEl.style.display = "block";
             questionNumber++;
             startQuiz()
 
