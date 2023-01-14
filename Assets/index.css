@@ -68,7 +68,7 @@
 
 #quizQuestions button {
     display: flex;
-    width: 50%;
+    width: 300px;
     margin-left: 20px;
     margin-bottom: 0.8rem;
     text-align: center;
@@ -86,15 +86,8 @@
     transform: transform 100ms;
 }
 
-
-
-
-
-
-
-
 #question_answer {
-    width: 50%;
+    width: 30%;
     margin: auto;
     position: absolute;
     top: 30%;
@@ -104,24 +97,30 @@
 }
 
 
+#acknowledgement {
+    border-top: 1px solid gray;
+    text-align: left;
+    color: gray;
+}
+
 
 #score{
     flex: 50%;
     text-align: right;
-    visibility: hidden;
 }
 
 #scoreTitle{
-    margin: 25px;
+    margin-right: px;
+    
 }
 
 #initialsPage {
-    text-align: center;
+    text-align: left;
     display: none;
     width: 75%;
     position: absolute;
     top: 35%;
-    left: 10%;
+    left: 25%;
 
 }
 #finalPage {

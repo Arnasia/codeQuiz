@@ -35,6 +35,10 @@ let quizQuestions = [{
     answer: "A.for (i=0;i<=5;i++)"
 }]
 
+scoreEl.style.display = "none";
+ackdiv.style.display = "none";
+
+
 let questionNumber = 0;
 function startQuiz (){
     initialPage.innerHTML="";
@@ -52,14 +56,16 @@ function startQuiz (){
     for (let i=0; i<currentQuestion.choices.length;i++){
         let choicebtn = document.createElement("button")
         choicebtn.innerHTML=currentQuestion.choices[i]
-        choicebtn.addEventListener('click',event=>{
+        choicebtn.addEventListener('click',event=>{            
             console.log(event.target.innerHTML)
-            let userChoice= event.target.innerHTML;
-            let correctAnswer= currentQuestion.answer;
+            let userChoice = event.target.innerHTML;
+            let correctAnswer = currentQuestion.answer;
             if (userChoice===correctAnswer){
                ackdiv.innerHTML="";
-               ackdiv.innerHTML="correct answer" 
+               ackdiv.innerHTML="Correct!"
+               ackdiv.style.display="block"
                score = score + 10;
+               scoreEl.style.display = "block";
                timeDiv.innerHTML=score;
                document.getElementById('finalscore').innerHTML = score;
                questionNumber++;
@@ -67,8 +73,10 @@ function startQuiz (){
 
             }else {
             ackdiv.innerHTML="";
-            ackdiv.innerHTML="incorrect answer" 
+            ackdiv.innerHTML="Wrong!" 
+            ackdiv.style.display="block"
             quizTime = quizTime - 10;
+            scoreEl.style.display = "block";
             questionNumber++;
             startQuiz()
 
@@ -87,8 +95,9 @@ function startQuiz (){
         quizDiv.innerHTML = "";
         ackdiv.innerHTML = "";
         initialsPageEl.style.display = "block";
+        
 
-        scoreEl.style.display = "block";
+        
         
         
         overallScoreEl.innerHTML = `${score} out of ${10*quizQuestions.length}`
