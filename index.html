@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Quiz</title>
-    <link rel="stylesheet" href="./index.css">
+    <title>Know Your Stuff(The JavaScript Way)</title>
+    <link rel="stylesheet" href="./Assets/index.css">
 </head>
 <body>
     <div id="upperDiv">
-        <div id="time"></div>
-        <div id="score">Score : <span id="finalscore"> 0 </span></div> 
+        <div id="highScores">View high scores</div>
+        <div id="time">Time : 0</div>
     </div>
     <div id="initialPage">
-        <button id="startQuiz">Start</button>
+        <p id="title">JavaScript Quiz</p>
+        <p id="intro">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds! Test your knowledge by clicking the start button below.</p>
+        <button id="startQuiz" >Start</button>
     </div>
-    <div id="quizQuestions"></div>
-    <div id="acknowledgement"></div>
+    <div id="question_answer">
+        <div id="score">Score : <span id="finalscore"> 0 </span></div> 
+        <div id="quizQuestions"></div>
+        <div id="acknowledgement"></div>
+    </div>
     <div id="initialsPage">
         <p id="scoreTitle">Your Final Score is <span id="overallScore"></span></p>
         <div id="initials">
@@ -29,6 +34,6 @@
         <p>finalPage</p>
     </div>
     <!-- document.getElementById('acknowledgement').innerHTML = "" -->
-    <script src="./index.js"></script>
+    <script src="./Assets/index.js"></script>
 </body>
 </html>

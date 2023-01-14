@@ -5,32 +5,34 @@ let quizDiv = document.getElementById("quizQuestions")
 let ackdiv = document.getElementById("acknowledgement")
 let initialsPageEl = document.getElementById("initialsPage")
 let finalPageEl = document.getElementById("finalPage")
+let scoreEl = document.getElementById("score")
 let overallScoreEl = document.getElementById("overallScore")
 let submitInitialsBtn = document.getElementById("submit_initials")
+let userHighscoresTAble = document.getElementById('HighscoreList')
 
 let quizTime= 50;
 let score = 0
 
 let quizQuestions = [{
-    question: "question1", 
-    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
-    answer: "choice 4"
+    question: "JavaScript is a ____ -side programming language.", 
+    choices: ["A.Client", "B.Server", "C.Both", "D.None"], 
+    answer: "C.Both"
 },{
-    question: "question2", 
-    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
-    answer: "choice 1"
+    question: "How do you find the minimum of x and y using JavaScript?", 
+    choices: ["A.min(x,y);", "B.Math.min(x,y)", "C.Math.min(xy)", "D.min(xy);"], 
+    answer: "B.Math.min(x,y)"
 },{
-    question: "question3", 
-    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
-    answer: "choice 3"
+    question: "Which JavaScript label catches all the values, except for the ones specified?", 
+    choices: ["A.catch", "B.label", "C.try", "D.default"], 
+    answer: "D.default"
 },{
-    question: "question4", 
-    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
-    answer: "choice 2"
+    question: "How to write an IF statement in JavaScript?", 
+    choices: ["A.if i=5", "B.if (i==5)", "C.if i=5 then", "D.if i==5 then"], 
+    answer: "B.if (i==5)"
 },{
-    question: "question5", 
-    choices: ["choice 1", "choice 2", "choice 3", "choice 4"], 
-    answer: "choice 3"
+    question: "How does a FOR loop start?", 
+    choices: ["A.for (i=0;i<=5;i++)", "B.for (i=0;i<=5)", "C.for (i<=5;i++)", "D.for i=1 to 5"], 
+    answer: "A.for (i=0;i<=5;i++)"
 }]
 
 let questionNumber = 0;
@@ -42,9 +44,11 @@ function startQuiz (){
         let currentQuestion = quizQuestions [questionNumber]
 
     let questiondiv = document.createElement("div")
+    questiondiv.setAttribute("id","question")
     questiondiv.innerHTML = currentQuestion.question;
 
     let choicediv= document.createElement("div")
+    choicediv.setAttribute("id","choice")
     for (let i=0; i<currentQuestion.choices.length;i++){
         let choicebtn = document.createElement("button")
         choicebtn.innerHTML=currentQuestion.choices[i]
@@ -79,12 +83,17 @@ function startQuiz (){
     }
 
     function initialsPage (){
-        initialPage.innerHTML="";
-        quizDiv.innerHTML=""
-        ackdiv.innerHTML=""
+        initialPage.innerHTML = "";
+        quizDiv.innerHTML = "";
+        ackdiv.innerHTML = "";
         initialsPageEl.style.display = "block";
 
+        scoreEl.style.display = "block";
+        
+        
         overallScoreEl.innerHTML = `${score} out of ${10*quizQuestions.length}`
+
+        
     }
 
     submitInitialsBtn.addEventListener('click',function(event){
@@ -103,8 +112,9 @@ function startQuiz (){
         } else {
             localStorageData.push(quizDetails)
         }
+    
 
-        localStorage.setItem('quiz_score',JSON.stringify(quizDetails))
+        localStorage.setItem('quiz_score',JSON.stringify(localStorageData))
         finalPage()
     })
 

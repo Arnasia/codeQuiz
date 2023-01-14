@@ -1,0 +1,131 @@
+#initialPage {
+    width: 50%;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    text-align: center;
+}
+
+#title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#intro {
+    font-family:'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+#upperDiv {
+    display: flex;
+    width: 100%;
+
+}
+
+#highScores {
+    color:blueviolet;
+    font-size: 20px;
+    text-align: left;
+}
+
+#time{
+    flex: 50%;
+    text-align: right;
+    font-size: 20px;
+}
+
+#startQuiz {
+    width: 15%;
+    margin: auto;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+    background: blueviolet;
+    font-size: 1rem;
+    color:aliceblue
+}
+
+#startQuiz:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgb(6, 103, 247, 0.5);
+    transform: scale(1.02);
+    transform: transform 100ms;
+}
+
+#quizQuestions {
+    font-weight:bolder;
+    font-size: 40px;
+    text-align: left;
+
+}
+
+#question {
+    margin: 20px;
+    
+}
+
+#quizQuestions button {
+    display: flex;
+    width: 50%;
+    margin-left: 20px;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    border-radius: 4px;
+    background: blueviolet;
+    font-size: 2rem;
+    color:white;
+    
+}
+
+#quizQuestions button:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgb(6, 103, 247, 0.5);
+    transform: scale(1.02);
+    transform: transform 100ms;
+}
+
+
+
+
+
+
+
+
+#question_answer {
+    width: 50%;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    text-align: center;
+
+}
+
+
+
+#score{
+    flex: 50%;
+    text-align: right;
+    visibility: hidden;
+}
+
+#scoreTitle{
+    margin: 25px;
+}
+
+#initialsPage {
+    text-align: center;
+    display: none;
+    width: 75%;
+    position: absolute;
+    top: 35%;
+    left: 10%;
+
+}
+#finalPage {
+    display: none;
+}
+
+
