@@ -96,6 +96,9 @@ function startQuiz (){
         initialsPageEl.style.display = "block";
         
 
+        
+        
+        
         overallScoreEl.innerHTML = `${score} out of ${10*quizQuestions.length}`
 
         
@@ -111,7 +114,7 @@ function startQuiz (){
             score: score 
         }
 
-        if (localStorageData === finalPage){
+        if (localStorageData === null){
             localStorageData=[]
             localStorageData.push(quizDetails)
         } else {
@@ -121,14 +124,13 @@ function startQuiz (){
         
 
         localStorage.setItem('quiz_score',JSON.stringify(localStorageData))
-        finalPage();
-
+        finalPage()
     })
 
     function finalPage (){
         initialsPageEl.style.display="none"
         finalPageEl.style.display="block"
-    
+       
     }   
 
 
@@ -149,8 +151,6 @@ function startTimer(){
  function init(){
     startTimer();
     startQuiz();
-    
-   
  }
 
 startbtn.addEventListener("click",init)
