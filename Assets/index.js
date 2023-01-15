@@ -8,7 +8,7 @@ let finalPageEl = document.getElementById("finalPage")
 let scoreEl = document.getElementById("score")
 let overallScoreEl = document.getElementById("overallScore")
 let submitInitialsBtn = document.getElementById("submit_initials")
-let userHighscoresTAble = document.getElementById('HighscoreList')
+
 
 let quizTime= 50;
 let score = 0
@@ -128,7 +128,29 @@ function startQuiz (){
     function finalPage (){
         initialsPageEl.style.display="none"
         finalPageEl.style.display="block"
+
+       
     }
+
+    let savedScore = function() {
+        localStorage.setItem("score", JSON.stringify(score));
+    }
+    let savedInit = function(initails) {
+        localStorage.setItem("initails", JSON.stringify(initails));
+    }
+    
+    // gets tasks from local storage and load them
+    function loadSaveScores() {
+        // get tasks items from local stroage
+        let savedScore = localStorage.getItem("score");
+        let savedInit = localStorage.getItem("initails");
+    
+        savedScore  = JSON.parse(savedScore);
+        savedInit = JSON.parse(savedInit);
+    
+        document.getElementById("hsDisplay").innerHTML = savedInit + " - " + savedScore;
+       
+    }   
     
 
 function startTimer(){
@@ -147,9 +169,15 @@ function startTimer(){
 
 }
 
+
+
+
+
  function init(){
     startTimer();
     startQuiz();
+    loadSaveScores();
+   
  }
 
 startbtn.addEventListener("click",init)
