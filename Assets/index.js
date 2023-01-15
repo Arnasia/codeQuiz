@@ -8,6 +8,9 @@ let finalPageEl = document.getElementById("finalPage")
 let scoreEl = document.getElementById("score")
 let overallScoreEl = document.getElementById("overallScore")
 let submitInitialsBtn = document.getElementById("submit_initials")
+let restartBtn = document.getElementById("goBack")
+
+
 
 
 let quizTime= 50;
@@ -43,7 +46,6 @@ let questionNumber = 0;
 function startQuiz (){
     initialPage.innerHTML="";
     quizDiv.innerHTML=""
-    console.log (questionNumber)
     if (questionNumber < 5){
         let currentQuestion = quizQuestions [questionNumber]
 
@@ -57,7 +59,6 @@ function startQuiz (){
         let choicebtn = document.createElement("button")
         choicebtn.innerHTML=currentQuestion.choices[i]
         choicebtn.addEventListener('click',event=>{            
-            console.log(event.target.innerHTML)
             let userChoice = event.target.innerHTML;
             let correctAnswer = currentQuestion.answer;
             if (userChoice===correctAnswer){
@@ -95,9 +96,6 @@ function startQuiz (){
         initialsPageEl.style.display = "block";
         
 
-        
-        
-        
         overallScoreEl.innerHTML = `${score} out of ${10*quizQuestions.length}`
 
         
@@ -113,50 +111,29 @@ function startQuiz (){
             score: score 
         }
 
-        if (localStorageData === null){
+        if (localStorageData === finalPage){
             localStorageData=[]
             localStorageData.push(quizDetails)
         } else {
             localStorageData.push(quizDetails)
         }
-    
+        
+        
 
         localStorage.setItem('quiz_score',JSON.stringify(localStorageData))
-        finalPage()
+        finalPage();
+
     })
 
     function finalPage (){
         initialsPageEl.style.display="none"
         finalPageEl.style.display="block"
-
-       
-    }
-
-    let savedScore = function() {
-        localStorage.setItem("score", JSON.stringify(score));
-    }
-    let savedInit = function(initails) {
-        localStorage.setItem("initails", JSON.stringify(initails));
-    }
     
-    // gets tasks from local storage and load them
-    function loadSaveScores() {
-        // get tasks items from local stroage
-        let savedScore = localStorage.getItem("score");
-        let savedInit = localStorage.getItem("initails");
-    
-        savedScore  = JSON.parse(savedScore);
-        savedInit = JSON.parse(savedInit);
-    
-        document.getElementById("hsDisplay").innerHTML = savedInit + " - " + savedScore;
-       
     }   
-    
+
 
 function startTimer(){
     let setTime= setInterval(function(){
-        console.log (quizTime)  
-        console.log (quizTime)
         if (quizTime >= 0){
             quizTime=quizTime - 1;
             timeDiv.innerHTML=`Time Left : ${quizTime}`
@@ -169,14 +146,10 @@ function startTimer(){
 
 }
 
-
-
-
-
  function init(){
     startTimer();
     startQuiz();
-    loadSaveScores();
+    
    
  }
 
