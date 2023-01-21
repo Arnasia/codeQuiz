@@ -61,11 +61,18 @@ function startQuiz (){
         choicebtn.addEventListener('click',event=>{            
             let userChoice = event.target.innerHTML;
             let correctAnswer = currentQuestion.answer;
+            console.log(userChoice)
+            console.log(correctAnswer)
             if (userChoice===correctAnswer){
                ackdiv.innerHTML="";
                ackdiv.innerHTML="Correct!"
                ackdiv.style.display="block"
+               setTimeout(() => {
+                ackdiv.innerHTML=""
+                ackdiv.style.display = "none"
+               },2000) 
                score = score + 10;
+               console.log(score)
                timeDiv.innerHTML=score;
                document.getElementById('finalscore').innerHTML = score;
                questionNumber++;
@@ -75,6 +82,10 @@ function startQuiz (){
             ackdiv.innerHTML="";
             ackdiv.innerHTML="Wrong!" 
             ackdiv.style.display="block"
+            setTimeout(() => {
+                ackdiv.innerHTML=""
+                ackdiv.style.display = "none"
+               },2000) 
             quizTime = quizTime - 10;
             questionNumber++;
             startQuiz()
@@ -129,9 +140,37 @@ function startQuiz (){
 
     function finalPage (){
         initialsPageEl.style.display="none"
-        finalPageEl.style.display="block"
+        finalPageEl.style.display="block";
+        displayHighScore()
        
-    }   
+    } 
+    function displayHighScore(){
+        let localStorageData= JSON.parse(localStorage.getItem('quiz_score'))
+        if (localStorageData != null){
+            let table = document.createElement("table")
+            let tableRow= document.createElement("tr")
+            let th1= document.createElement("th")
+            th1.innerHTML="Initials"
+            let th2= document.createElement("th")
+            th2.innerHTML="Score"
+            tableRow.append(th1, th2)
+            table.append(tableRow)
+
+            for (let i = 0; i < localStorageData.length; i++){
+                let tableRow= document.createElement("tr")
+                let td1= document.createElement("td")
+                td1.innerHTML=localStorageData[i].initials
+                let td2= document.createElement("td")
+                td2.innerHTML=localStorageData[i].score
+                tableRow.append(td1, td2)
+                table.append(tableRow)
+
+
+            }
+            document.getElementById('hsDisplay').append(table)
+        }
+        
+    } 
 
 
 function startTimer(){
