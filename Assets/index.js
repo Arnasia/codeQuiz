@@ -8,8 +8,8 @@ let finalPageEl = document.getElementById("finalPage")
 let scoreEl = document.getElementById("score")
 let overallScoreEl = document.getElementById("overallScore")
 let submitInitialsBtn = document.getElementById("submit_initials")
-let restartBtn = document.getElementById("goBack")
-
+let clearBtn= document.getElementById("clearHs")
+let backBtn = document.getElementById("goBack")
 
 
 
@@ -33,9 +33,9 @@ let quizQuestions = [{
     choices: ["A.if i=5", "B.if (i==5)", "C.if i=5 then", "D.if i==5 then"], 
     answer: "B.if (i==5)"
 },{
-    question: "How does a FOR loop start?", 
-    choices: ["A.for (i=0;i<=5;i++)", "B.for (i=0;i<=5)", "C.for (i<=5;i++)", "D.for i=1 to 5"], 
-    answer: "A.for (i=0;i<=5;i++)"
+    question: "Which event occurs when the user clicks on an HTML element?", 
+    choices: ["A.onclick", "B.onmouseover", "C.onmouseclick", "D.onchange"], 
+    answer: "A.onclick"
 }]
 
 scoreEl.style.display = "none";
@@ -61,8 +61,6 @@ function startQuiz (){
         choicebtn.addEventListener('click',event=>{            
             let userChoice = event.target.innerHTML;
             let correctAnswer = currentQuestion.answer;
-            console.log(userChoice)
-            console.log(correctAnswer)
             if (userChoice===correctAnswer){
                ackdiv.innerHTML="";
                ackdiv.innerHTML="Correct!"
@@ -70,7 +68,7 @@ function startQuiz (){
                setTimeout(() => {
                 ackdiv.innerHTML=""
                 ackdiv.style.display = "none"
-               },2000) 
+               },300) 
                score = score + 10;
                console.log(score)
                timeDiv.innerHTML=score;
@@ -85,7 +83,7 @@ function startQuiz (){
             setTimeout(() => {
                 ackdiv.innerHTML=""
                 ackdiv.style.display = "none"
-               },2000) 
+               },300) 
             quizTime = quizTime - 10;
             questionNumber++;
             startQuiz()
@@ -172,7 +170,6 @@ function startQuiz (){
         
     } 
 
-
 function startTimer(){
     let setTime= setInterval(function(){
         if (quizTime >= 0){
@@ -187,9 +184,26 @@ function startTimer(){
 
 }
 
+    function clearAll () {
+       localStorage.clear()
+       
+    }
+
+    function reset () {
+        window.location.reload();
+    }
+    
+
+
  function init(){
     startTimer();
     startQuiz();
+
  }
 
+
 startbtn.addEventListener("click",init)
+clearBtn.addEventListener("click",clearAll)
+backBtn.addEventListener("click",reset)
+
+
