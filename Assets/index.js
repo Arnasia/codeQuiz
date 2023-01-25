@@ -10,6 +10,7 @@ let overallScoreEl = document.getElementById("overallScore")
 let submitInitialsBtn = document.getElementById("submit_initials")
 let clearBtn= document.getElementById("clearHs")
 let backBtn = document.getElementById("goBack")
+let viewBtn = document.getElementById("highScores")
 
 
 
@@ -40,6 +41,16 @@ let quizQuestions = [{
 
 scoreEl.style.display = "none";
 ackdiv.style.display = "none";
+
+function viewHs (event){
+    event.preventDefault()
+    initialPage.innerHTML="";
+    quizDiv.innerHTML="";
+    finalPage()
+    
+    
+
+}
 
 
 let questionNumber = 0;
@@ -189,11 +200,6 @@ function startTimer(){
        
     }
 
-    function reset () {
-        window.location.reload();
-    }
-    
-
 
  function init(){
     startTimer();
@@ -201,9 +207,14 @@ function startTimer(){
 
  }
 
+ function reset () {
+    window.location.reload();
+}
+
 
 startbtn.addEventListener("click",init)
 clearBtn.addEventListener("click",clearAll)
 backBtn.addEventListener("click",reset)
+viewBtn.addEventListener("click",viewHs)
 
 

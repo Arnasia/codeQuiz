@@ -30,6 +30,12 @@
     text-align: left;
 }
 
+#highScores:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transform: transform 100ms;
+}
+
 #time{
     flex: 50%;
     text-align: right;
