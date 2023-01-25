@@ -11,6 +11,7 @@ let submitInitialsBtn = document.getElementById("submit_initials")
 let clearBtn= document.getElementById("clearHs")
 let backBtn = document.getElementById("goBack")
 let viewBtn = document.getElementById("highScores")
+let hsDiv = document.getElementById("hsDisplay")
 
 
 
@@ -196,7 +197,9 @@ function startTimer(){
 }
 
     function clearAll () {
+        hsDisplay.innerHTML=""
        localStorage.clear()
+       
        
     }
 
